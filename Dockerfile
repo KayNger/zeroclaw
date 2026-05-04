@@ -28,8 +28,10 @@ COPY Cargo.toml Cargo.lock ./
 # crates/<name>/Cargo.toml directory structure.
 # aardvark-sys has an implicit build script (build.rs at its crate root) that
 # Cargo must compile during the dependency pre-fetch step; copy it explicitly.
-COPY --parents crates/*/Cargo.toml ./
-COPY --parents crates/aardvark-sys/build.rs ./
+COPY crates/aardvark-proxy/Cargo.toml ./crates/aardvark-proxy/
+COPY crates/aardvark-sys/Cargo.toml ./crates/aardvark-sys/
+COPY crates/aardvark-sys/build.rs ./crates/aardvark-sys/
+COPY crates/zeroclaw-core/Cargo.toml ./crates/zeroclaw-core/
 # apps/tauri: .dockerignore whitelists only Cargo.toml; src and build.rs are stubbed below.
 COPY apps/tauri/Cargo.toml apps/tauri/Cargo.toml
 # Create dummy targets for all workspace members so manifest parsing succeeds.
